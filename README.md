@@ -17,15 +17,15 @@ Every skill is **Fair Housing compliant**, **TCPA-aware**, and **MLS-rule respec
 | Status | # | Episode | Skill |
 |--------|---|---------|-------|
 | ✅ | E1 | Claude Code in 15 Minutes — 3 Wins | [`quick-start-3-wins`](skills/quick-start-3-wins/) |
-| ✅ | E2 | Why Claude Skills Change Real Estate (thesis) | [`fair-housing-overlay`](skills/fair-housing-overlay/) |
-| ✅ | E3 | Listing Descriptions in 10 Minutes | [`listing-description`](skills/listing-description/) |
-| ✅ | E4 | Counter Every Offer Like a 20-Year Pro | [`offer-counter`](skills/offer-counter/) |
-| ✅ | E5 | Your Lead Nurture Just Wrote Itself | [`lead-nurture-cadence`](skills/lead-nurture-cadence/) |
-| ⏳ | E6 | CMA Narratives in 60 Seconds | [`cma-narrative`](skills/cma-narrative/) |
-| ⏳ | E7 | Claude → BoldTrail/kvCore Integration | [`claude-boldtrail-bridge`](skills/claude-boldtrail-bridge/) |
-| ⏳ | E8 | Today's MLS Pull → 5 Social Posts | [`mls-to-social`](skills/mls-to-social/) |
-| ⏳ | E9 | Listing Presentation — From Comps to Brief | [`listing-presentation-builder`](skills/listing-presentation-builder/) |
-| ⏳ | E10 | Replace Your VA — Full 9-Skill Stack | (compilation) |
+| 📋 | E2 | Why Claude Skills Change Real Estate (thesis) | [`fair-housing-overlay`](skills/fair-housing-overlay/) |
+| 📋 | E3 | Listing Descriptions in 10 Minutes | [`listing-description`](skills/listing-description/) |
+| 📋 | E4 | Counter Every Offer Like a 20-Year Pro | [`offer-counter`](skills/offer-counter/) |
+| 📋 | E5 | Your Lead Nurture Just Wrote Itself | [`lead-nurture-cadence`](skills/lead-nurture-cadence/) |
+| 📋 | E6 | CMA Narratives in 60 Seconds | [`cma-narrative`](skills/cma-narrative/) |
+| 📋 | E7 | Claude → BoldTrail/kvCore Integration | [`claude-boldtrail-bridge`](skills/claude-boldtrail-bridge/) |
+| 📋 | E8 | Today's MLS Pull → 5 Social Posts | [`mls-to-social`](skills/mls-to-social/) |
+| 📋 | E9 | Listing Presentation — From Comps to Brief | [`listing-presentation-builder`](skills/listing-presentation-builder/) |
+| 📋 | E10 | Replace Your VA — Full 9-Skill Stack | (compilation) |
 
 ### Season 2 — Canva Stack for Realtors (E11-E20)
 
@@ -33,18 +33,20 @@ eXp gives every agent free Canva. These skills generate FH-clean copy + Canva de
 
 | Status | # | Episode | Skill |
 |--------|---|---------|-------|
-| ✅ | E11 | Canva + Claude — Replace Your Designer | [`canva/foundation`](skills/canva/foundation/) |
-| ✅ | E12 | Just Listed in 60 Seconds | [`canva/just-listed`](skills/canva/just-listed/) |
-| ✅ | E13 | Open House Flyer — Compliant by Default | [`canva/open-house`](skills/canva/open-house/) |
-| ⏳ | E14 | Just Sold + Testimonial Request | [`canva/just-sold`](skills/canva/just-sold/) |
-| ⏳ | E15 | Coming Soon Teaser | [`canva/coming-soon`](skills/canva/coming-soon/) |
-| ⏳ | E16 | Listing Presentation — Comps to Canva | [`canva/listing-presentation`](skills/canva/listing-presentation/) |
-| ⏳ | E17 | CMA Cover That Sells the Meeting | [`canva/cma-cover`](skills/canva/cma-cover/) |
-| ⏳ | E18 | Quarterly Postcard for Geographic Farming | [`canva/quarterly-postcard`](skills/canva/quarterly-postcard/) |
-| ⏳ | E19 | Closing Day Card + Branded Photo Overlay | [`canva/closing-day`](skills/canva/closing-day/) |
-| ⏳ | E20 | Price Reduced + Coming Back on Market | [`canva/price-reduced`](skills/canva/price-reduced/) |
+| 📋 | E11 | Canva + Claude — Replace Your Designer | [`canva/foundation`](skills/canva/foundation/) |
+| 📋 | E12 | Just Listed in 60 Seconds | [`canva/just-listed`](skills/canva/just-listed/) |
+| 📋 | E13 | Open House Flyer — Compliant by Default | [`canva/open-house`](skills/canva/open-house/) |
+| 📋 | E14 | Just Sold + Testimonial Request | [`canva/just-sold`](skills/canva/just-sold/) |
+| 📋 | E15 | Coming Soon Teaser | [`canva/coming-soon`](skills/canva/coming-soon/) |
+| 📋 | E16 | Listing Presentation — Comps to Canva | [`canva/listing-presentation`](skills/canva/listing-presentation/) |
+| 📋 | E17 | CMA Cover That Sells the Meeting | [`canva/cma-cover`](skills/canva/cma-cover/) |
+| 📋 | E18 | Quarterly Postcard for Geographic Farming | [`canva/quarterly-postcard`](skills/canva/quarterly-postcard/) |
+| 📋 | E19 | Closing Day Card + Branded Photo Overlay | [`canva/closing-day`](skills/canva/closing-day/) |
+| 📋 | E20 | Price Reduced + Coming Back on Market | [`canva/price-reduced`](skills/canva/price-reduced/) |
 
-✅ = SKILL.md drafted · ⏳ = stub, drops with its episode
+**Legend:** ✅ = YouTube episode aired · 📋 = skill ready, episode upcoming Thursday
+
+**All 19 skills are fully drafted and usable today.** Episodes air weekly on Thursdays — each one walks through its skill in action, but the skill itself is ready right now. Browse `/skills/` and start using them.
 
 ## Compliance baked in
 
