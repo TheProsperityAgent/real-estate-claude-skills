@@ -1,0 +1,27 @@
+# ============================================================
+# Day-ahead orchestration — Victoria's actual morning/evening cron chain.
+# Window: 5:45-7:30 AM (family-time-protected) + evening prep 7-8:30 PM.
+# ============================================================
+
+# EVENING PREP — tomorrow's content drafts overnight (cheap, no time pressure)
+0 19 * * *  cd ~/content-agent && python3 refresh_gems.py >> logs/gems.log 2>&1
+45 19 * * * cd ~/content-agent && python3 batch_content_submit.py --submit >> logs/batch.log 2>&1
+15 20 * * * cd ~/content-agent && python3 heygen_daily_batch.py >> logs/heygen.log 2>&1
+
+# MORNING COLLECT + SCHEDULE TOMORROW (5:45-7:30 AM, family-time-protected)
+45 5 * * *  cd ~/content-agent && python3 seo_pulse_reader.py >> logs/seo.log 2>&1
+0 6 * * *   cd ~/content-agent && python3 heygen_check_completed.py >> logs/heygen.log 2>&1
+15 6 * * *  cd ~/content-agent && bash run_daily.sh >> logs/cron.log 2>&1
+30 6 * * *  cd ~/content-agent && python3 google_search_console.py >> logs/gsc.log 2>&1
+50 6 * * *  cd ~/content-agent && python3 schedule_5pm_shorts.py >> logs/shorts.log 2>&1
+
+# SAFETY-NET POLLS (across the day — catch late renders + image issues)
+0 10,14,18 * * * cd ~/content-agent && python3 heygen_check_completed.py >> logs/heygen.log 2>&1
+30 8 * * *  cd ~/content-agent && python3 metricool_image_sweeper.py --apply >> logs/sweeper.log 2>&1
+30 16 * * * cd ~/content-agent && python3 metricool_image_sweeper.py --apply >> logs/sweeper.log 2>&1
+
+# CROSS-CRON SUPERVISOR — every 2 hours, watches every other cron
+0 */2 * * * cd ~/content-agent && python3 supervisor/supervisor.py >> logs/supervisor.log 2>&1
+
+# COMPLIANCE — 11 AM hard gate before publish
+0 11 * * *  cd ~/content-agent && TZ=America/New_York python3 compliance_supervisor.py >> logs/compliance.log 2>&1

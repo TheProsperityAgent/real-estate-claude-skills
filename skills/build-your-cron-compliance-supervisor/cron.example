@@ -1,0 +1,2 @@
+# 11 AM daily — 14-check compliance run on tomorrow's queued content. Holds violations in /content/blocked/.
+0 11 * * * cd ~/content-agent && TZ=America/New_York python3 compliance_supervisor.py >> ~/content-agent/logs/compliance.log 2>&1

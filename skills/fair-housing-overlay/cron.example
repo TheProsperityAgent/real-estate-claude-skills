@@ -1,0 +1,10 @@
+# fair-housing-overlay is a FOUNDATION skill — it doesn't run on its own cron. It's loaded by
+# every other skill in this repo at generation time. The compliance check that DOES run as a cron
+# is compliance_supervisor.py at 11 AM (see build-your-cron-compliance-supervisor).
+
+# 11 AM compliance run — same 47-phrase blocklist as Rule Set 1 of this overlay, applied as a
+# post-generation safety net before content reaches a publish API.
+0 11 * * * cd ~/content-agent && TZ=America/New_York python3 compliance_supervisor.py >> ~/content-agent/logs/compliance.log 2>&1
+
+# Nightly fair-housing safety-net pass on any drafts not gated by the supervisor.
+30 3 * * * cd ~/content-agent && python3 strip_school_language.py >> ~/content-agent/logs/strip.log 2>&1

@@ -1,0 +1,2 @@
+# Every 5 minutes — fresh-lead catcher. Silent unless a lead was processed.
+*/5 * * * * cd ~/content-agent && set -a && . ./.env && set +a && python3 speed_to_lead.py >> ~/content-agent/logs/speed_to_lead.log 2>&1

@@ -1,0 +1,12 @@
+# mls-to-social runs inside the 6:15 AM master cron (run_daily.sh) for daily 4-platform fan-out.
+# See build-your-cron-daily-mls-to-metricool for the full build.
+
+# Master morning fan-out — drafts tomorrow's posts + schedules to Metricool.
+15 6 * * * cd ~/content-agent && bash run_daily.sh >> ~/content-agent/logs/cron.log 2>&1
+
+# Saturday 8:00 AM — weekly market-recap variant (last week's MLS activity).
+0 8 * * 6 cd ~/content-agent && python3 mls_to_social_weekly_recap.py >> ~/content-agent/logs/recap.log 2>&1
+
+# Twice-daily image-sweeper safety net.
+30 8 * * * cd ~/content-agent && python3 metricool_image_sweeper.py --apply >> ~/content-agent/logs/sweeper.log 2>&1
+30 16 * * * cd ~/content-agent && python3 metricool_image_sweeper.py --apply >> ~/content-agent/logs/sweeper.log 2>&1

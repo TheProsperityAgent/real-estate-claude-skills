@@ -1,0 +1,6 @@
+# quick-start-3-wins is ON-DISPATCH ONLY — no cron. Triggered manually when a new listing lands,
+# an offer comes in, or you want today's social posts. When you want to automate the daily social
+# fan-out, graduate to build-your-cron-daily-mls-to-metricool.
+
+# The cron line you'll write THEN looks like this:
+# 15 6 * * * cd ~/content-agent && bash run_daily.sh >> ~/content-agent/logs/cron.log 2>&1

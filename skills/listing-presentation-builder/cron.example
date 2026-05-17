@@ -1,0 +1,10 @@
+# listing-presentation-builder is ON-DISPATCH ONLY — triggered per listing appointment.
+# No cron. Listing presentations happen on a per-seller cadence.
+
+# Supporting crons that fire around a listing-presentation cycle:
+
+# Daily MLS pull at 6:15 (the data feeding into the comp section).
+15 6 * * * cd ~/content-agent && bash run_daily.sh >> ~/content-agent/logs/cron.log 2>&1
+
+# Monthly 3rd — town-level market carousel that lives in Gamma the same way listing-presentation does.
+0 7 3 * * cd ~/content-agent && python3 render_pitt_carousel_gamma.py >> ~/content-agent/logs/carousel.log 2>&1

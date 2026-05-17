@@ -1,0 +1,3 @@
+# Saturday 8:00 AM — weekly market-recap variant of the lifecycle (5 platform posts + Canva brief from last week's MLS data).
+# Loads fair-housing-overlay. Writes captions + Canva briefs to ~/canva-lifecycle/<date>/. Silent unless something failed.
+0 8 * * 6 cd ~/content-agent && python3 canva_lifecycle_weekly_recap.py --week last >> ~/content-agent/logs/canva_lifecycle.log 2>&1

@@ -1,0 +1,5 @@
+# 6:15 AM — single cron line, all three brand routers fire inside run_daily.sh.
+15 6 * * * cd ~/content-agent && bash run_daily.sh >> ~/content-agent/logs/cron.log 2>&1
+
+# Weekly brand-separation sanity check (Fridays 9 AM).
+0 9 * * 5 cd ~/content-agent && python3 weekly_brand_separation_check.py >> ~/content-agent/logs/brand_separation.log 2>&1

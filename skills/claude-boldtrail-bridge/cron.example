@@ -1,0 +1,15 @@
+# claude-boldtrail-bridge is the auth + write layer used by multiple crons. The bridge itself
+# doesn't have a cron — it's a library other crons call. These are the bridge-powered crons:
+
+# Every 5 min — speed-to-lead Day 0 catch.
+*/5 * * * * cd ~/content-agent && set -a && . ./.env && set +a && python3 speed_to_lead.py >> ~/content-agent/logs/speed_to_lead.log 2>&1
+
+# 7 AM Mon-Sat (launchd) — daily call list email to Al + Victoria.
+0 7 * * 1-6 cd ~/content-agent && python3 agent10_daily_call_list.py >> ~/content-agent/logs/call_list.log 2>&1
+
+# 10 AM daily — long-term nurture sends.
+0 10 * * * cd ~/content-agent && python3 agent10_crm_nurture.py --daily >> ~/content-agent/logs/agent10.log 2>&1
+
+# 6:50 AM + 6:55 AM — phase-change auto-tag (listing → UC → CLD).
+50 6 * * * cd ~/content-agent && python3 under_contract_phase_scanner.py >> ~/content-agent/logs/uc.log 2>&1
+55 6 * * * cd ~/content-agent && python3 listing_phase_scanner.py >> ~/content-agent/logs/listing.log 2>&1

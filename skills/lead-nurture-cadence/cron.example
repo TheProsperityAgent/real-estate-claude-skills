@@ -1,0 +1,11 @@
+# lead-nurture-cadence drafts the plan on-dispatch (per new lead).
+# The plan executes via two crons:
+
+# 10:00 AM daily — long-term cadence sends. Reads nurture_state.json + fires today's due touches.
+0 10 * * * cd ~/content-agent && set -a && . ./.env && set +a && python3 agent10_crm_nurture.py --daily >> ~/content-agent/logs/agent10.log 2>&1
+
+# Every 5 min — speed-to-lead catches Day 0 within 5-15 min vs the 23-hour baseline.
+*/5 * * * * cd ~/content-agent && set -a && . ./.env && set +a && python3 speed_to_lead.py >> ~/content-agent/logs/speed_to_lead.log 2>&1
+
+# Hourly Mon-Sat 10-20 — supervisor verifies the day's touches actually landed.
+0 10-20 * * 1-6 cd ~/content-agent && python3 nurture_supervisor.py >> ~/content-agent/logs/nurture_supervisor.log 2>&1

@@ -1,0 +1,7 @@
+# listing-description is ON-DISPATCH ONLY — triggered when a new listing lands.
+# No cron. The cron-class skill that AUTOMATES new-listing fan-out is
+# build-your-cron-daily-mls-to-metricool — it pulls new MLS listings each morning
+# and runs them through listing-description + mls-to-social + canva-real-estate-lifecycle.
+
+# When you graduate to automation, the cron line looks like this:
+# 15 6 * * * cd ~/content-agent && bash run_daily.sh >> ~/content-agent/logs/cron.log 2>&1

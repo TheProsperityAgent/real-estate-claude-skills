@@ -1,0 +1,7 @@
+# offer-counter is ON-DISPATCH ONLY — triggered when a counter-offer comes in.
+# No cron. Counter negotiations happen on a deal-by-deal cadence, not a schedule.
+
+# The supporting crons that fire AROUND a counter (not the counter itself):
+# 6:55 AM — listing_phase_scanner.py auto-tags BT contact stage if status flipped to UC
+55 6 * * * cd ~/content-agent && python3 listing_phase_scanner.py >> ~/content-agent/logs/phase.log 2>&1
+50 6 * * * cd ~/content-agent && python3 under_contract_phase_scanner.py >> ~/content-agent/logs/uc.log 2>&1

@@ -1,0 +1,8 @@
+# cma-narrative is ON-DISPATCH ONLY — triggered per listing appointment.
+# No cron. CMAs happen on a per-seller cadence, not a schedule.
+
+# The closest supporting cron is the monthly Pitt market carousel that uses
+# town-level data the same way Section 3 of this skill does:
+# 3rd of the month — render_pitt_carousel_gamma.py uses NCRMLS data, generates
+# Gamma deck → 5 PNGs → Metricool for IG+FB.
+0 7 3 * * cd ~/content-agent && python3 render_pitt_carousel_gamma.py >> ~/content-agent/logs/carousel.log 2>&1
