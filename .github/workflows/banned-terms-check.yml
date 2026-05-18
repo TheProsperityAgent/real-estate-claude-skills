@@ -1,0 +1,68 @@
+name: Banned Terms Check
+
+# Defense against accidentally leaking internal-only paid-tool names into
+# this public repository. The actual term list lives in the repository
+# secret `BANNED_TERMS` (comma-separated, case-insensitive). The workflow
+# fails the push/PR if any term appears in tracked file content or in the
+# latest commit message.
+#
+# To update the term list: gh secret set BANNED_TERMS --body "term1,term2"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout (full history for commit-message scan)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Scan tracked files and latest commit message for banned terms
+        env:
+          BANNED_TERMS: ${{ secrets.BANNED_TERMS }}
+        run: |
+          set -e
+          if [ -z "$BANNED_TERMS" ]; then
+            echo "::error::Repository secret BANNED_TERMS is not configured. Configure it via: gh secret set BANNED_TERMS --body \"term1,term2\""
+            exit 1
+          fi
+
+          fail=0
+
+          IFS=',' read -ra TERMS <<< "$BANNED_TERMS"
+          for raw in "${TERMS[@]}"; do
+            term="$(echo "$raw" | xargs)"
+            if [ -z "$term" ]; then continue; fi
+
+            # Scan tracked file content (case-insensitive)
+            hits="$(grep -r -i -l --exclude-dir=.git --exclude-dir=.github "$term" . 2>/dev/null || true)"
+            if [ -n "$hits" ]; then
+              echo "::error::Banned term found in tracked files (case-insensitive match):"
+              while IFS= read -r f; do
+                echo "::error file=$f::contains banned-terms entry"
+                echo "  $f"
+              done <<< "$hits"
+              fail=1
+            fi
+
+            # Scan latest commit message
+            if git log -1 --format='%B' | grep -qi -- "$term"; then
+              echo "::error::Banned term found in latest commit message"
+              fail=1
+            fi
+          done
+
+          if [ "$fail" -ne 0 ]; then
+            echo "::error::Push blocked. Remove the banned term(s) from file content AND commit message, then force-push the cleaned history. Standard cleanup procedure: git filter-repo --replace-text + --replace-message + force-push."
+            exit 1
+          fi
+
+          echo "✓ No banned terms found. Push approved."
