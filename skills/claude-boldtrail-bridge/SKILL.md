@@ -26,7 +26,7 @@ This is the integration that makes the rest of the stack autonomous instead of a
        ├── Generate: nurture touch using lead-nurture-cadence skill
        │
        └── Write: POST /api/v1/contacts/{id}/notes
-             ↳ note title (PUBLIC-DATA — YYYY-MM-DD format for safety / NURTURE — for cadence)
+             ↳ note title (PUBLIC-DATA — YYYY-MM-DD for AI-enriched lookups / NURTURE — for cadence)
              ↳ note body (the actual touch content)
              ↳ tag updates ("nurture-active" → "nurture-paused" if opt-out detected)
 ```

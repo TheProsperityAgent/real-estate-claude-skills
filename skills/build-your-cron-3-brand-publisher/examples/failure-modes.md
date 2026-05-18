@@ -87,7 +87,7 @@ Daily brief includes which routers succeeded and which failed.
 
 ## 8. Mentioning a tool you weren't supposed to mention
 
-**Symptom:** A blog post mentions internal-only paid tool (or any other internal-only paid tool whose ToS prohibits automation).
+**Symptom:** A blog post mentions an internal-only paid tool whose ToS prohibits automation.
 
 **Why:** The voice gem didn't include the banned-tool list.
 

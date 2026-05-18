@@ -49,7 +49,7 @@ Locked pivots:
 
 Banned phrases:
 - "Claude vs ChatGPT" framing — chat tools are great, Code does different work.
-- "internal-only paid tool" — internal-only, never appears in public content.
+- Any internal-only paid tool whose ToS prohibits automation — never appears in public content.
 - Cold-call language.
 - Fear framing ("if you don't switch, you'll lose...").
 

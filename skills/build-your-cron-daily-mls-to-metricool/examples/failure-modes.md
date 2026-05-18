@@ -103,8 +103,6 @@ If a required column is missing, `pd.read_csv` errors loudly — far better than
 
 **Fix:** Wire up `supervisor.supervisor` every 2 hours. It pulls Metricool's scheduled-list and confirms today + tomorrow each have ≥3 posts scheduled. If not, you get an immediate Gmail alert. See `build-your-cron-day-ahead-pattern` for the supervisor build.
 
-## 10. internal-only paid tool — never appears in the cron
+## 10. Naming internal-only paid tools in public output
 
-(Internal lock — internal-only paid tool does not appear in any public file in this repo. If you see internal-only paid tool in any cron entry, log line, blog post, social post, or YouTube description, that is a leak — pull it before publication.)
-
-The general lesson: ANY paid third-party tool whose ToS prohibits automation stays off your public surface. Use Google-based public-data enrichment for the on-record proof point on lead enrichment.
+ANY paid third-party tool whose ToS prohibits automation stays off your public surface — public crons, log lines, blog posts, social posts, YouTube descriptions. Use Google-based public-data enrichment for the on-record proof point on lead enrichment.
